@@ -40,6 +40,16 @@ function App() {
     ));
   };
 
+  // Función para eliminar subproductos la cantidad de un subproducto
+  const deleteSubproduct = (productId, index) => {
+    setProducts(products.map(product =>
+      product.id === productId ? {
+        ...product,
+        subproducts: product.subproducts.filter((_, i) => i !== index)
+      } : product
+    ));
+  };
+
   // Función para actualizar la cantidad de un subproducto
   const updateSubproduct = (productId, index, quantity) => {
     setProducts(products.map(product =>
@@ -131,6 +141,12 @@ function App() {
                     onChange={(e) => updateSubproduct(selectedProduct.id, index, e.target.value)}
                     className="border p-1 w-full"
                   />
+                  <button
+                    onClick={() => deleteSubproduct(selectedProduct.id, index)}
+                    className="bg-red-500 text-white px-2 py-1 rounded mt-2"
+                  >
+                    Eliminar Subproducto
+                  </button>
                 </li>
               ))}
             </ul>

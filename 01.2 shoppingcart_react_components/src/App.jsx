@@ -55,6 +55,7 @@ function App() {
     ));
   };
 
+  // Función para eliminar subproductos la cantidad de un subproducto
   const deleteSubproduct = (productId, index) => {
     setProducts(products.map(product =>
       product.id === productId ? {
